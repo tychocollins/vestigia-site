@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VESTIGIA LABS | SENTINEL SYSTEM</title>
+    <title>VESTIGIA LABS</title>
     
     <meta name="theme-color" content="#020c1b">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -44,17 +44,14 @@
             text-align: center; 
             padding: 1rem;
             width: 100%;
-            max-width: 1000px; /* Wide enough for single line */
+            max-width: 1000px;
         }
 
         h1 { 
-            /* THE SINGLE LINE FIX */
             white-space: nowrap; 
-            
-            /* Responsive sizing: HUGE on desktop, scaled to fit mobile width */
-            font-size: clamp(1.5rem, 6vw, 5rem); 
-            
-            letter-spacing: clamp(2px, 1vw, 15px); 
+            /* TWEAKED: Reduced max size from 5rem to 3.5rem for Desktop elegance */
+            font-size: clamp(1.4rem, 5vw, 3.5rem); 
+            letter-spacing: clamp(2px, 1vw, 12px); 
             margin: 0; 
             text-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
             cursor: default;
@@ -64,18 +61,14 @@
 
         .subtitle { 
             color: #8892b0; 
-            margin-top: 2rem;
-            margin-bottom: 4rem; 
-            
-            /* MADE THIS BIGGER AS REQUESTED */
-            font-size: clamp(0.7rem, 2vw, 1.1rem);
-            
+            margin-top: 1.5rem;
+            margin-bottom: 3rem; 
+            font-size: clamp(0.7rem, 2vw, 1rem);
             letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 600;
         }
 
-        /* The Blinking Cursor */
         .cursor {
             display: inline-block;
             animation: blink 1s step-end infinite;
@@ -88,12 +81,18 @@
             50% { opacity: 0; }
         }
 
+        /* TWEAKED: Button is now slimmer on mobile */
         .trigger-btn {
             background: rgba(100, 255, 218, 0.05);
             color: #64ffda; 
             border: 1px solid #64ffda; 
-            padding: 18px 40px; 
-            font-size: 0.9rem;
+            
+            /* Responsive Padding: Smaller on phone, normal on desktop */
+            padding: clamp(12px, 1.5vh, 16px) clamp(25px, 3vw, 40px);
+            
+            /* Responsive Font: Slightly smaller to match the sleek look */
+            font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+            
             cursor: pointer;
             letter-spacing: 3px;
             transition: all 0.4s ease;
@@ -146,7 +145,6 @@
 
     <div class="container">
         <h1>VESTIGIA LABS</h1>
-        
         <p class="subtitle"><span id="typewriter"></span><span class="cursor">_</span></p>
         
         <button id="startBtn" class="trigger-btn" onclick="openTerminal()">[ INITIALIZE UPLINK ]</button>
