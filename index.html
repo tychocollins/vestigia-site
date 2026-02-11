@@ -18,7 +18,8 @@
         }
 
         body { 
-            background: radial-gradient(circle at center, #061229 0%, #020c1b 70%, #000000 100%);
+            /* MATCHED: Desktop radial gradient style */
+            background: radial-gradient(circle at center, #0b1d3a 0%, #020c1b 70%, #000000 100%);
             color: #64ffda;
             font-family: 'Courier New', Courier, monospace; 
             margin: 0; 
@@ -51,6 +52,7 @@
             font-size: clamp(1.8rem, 6vw, 3.5rem); 
             letter-spacing: clamp(2px, 1vw, 12px); 
             margin: 0; 
+            /* MATCHED: Desktop text glow */
             text-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
             cursor: default;
             line-height: 1;
@@ -58,6 +60,7 @@
         }
 
         .subtitle { 
+            /* MATCHED: Desktop muted blue-grey */
             color: #8892b0; 
             margin-top: 1.5rem;
             margin-bottom: 3rem; 
@@ -83,9 +86,7 @@
             background: rgba(100, 255, 218, 0.05);
             color: #64ffda; 
             border: 1px solid #64ffda; 
-            /* REDUCED: Slimmer padding for mobile (10px min height) */
             padding: clamp(10px, 1.8vh, 18px) clamp(20px, 3.5vw, 45px);
-            /* REDUCED: Smaller font on mobile for a sleeker look */
             font-size: clamp(0.75rem, 1.4vw, 0.95rem);
             cursor: pointer;
             letter-spacing: 2px;
