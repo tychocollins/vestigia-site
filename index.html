@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VESTIGIA LABS</title>
+    <title>VESTIGIA LABS | SENTINEL SYSTEM</title>
     
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
@@ -21,7 +21,6 @@
             align-items: center;
         }
 
-        /* Particle Background Layer */
         #particles-js {
             position: absolute;
             width: 100%;
@@ -33,124 +32,119 @@
         /* Main Content Box */
         .container { 
             position: relative;
-            z-index: 10; /* Above particles */
+            z-index: 10;
             text-align: center; 
-            padding: 3rem;
-            background: rgba(2, 12, 27, 0.85); /* Glassmorphism */
-            border: 1px solid rgba(100, 255, 218, 0.3);
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            border-radius: 4px;
-            max-width: 600px;
+            padding: 4rem;
+            max-width: 700px;
         }
 
-        /* --- TYPOGRAPHY & GLITCH EFFECT --- */
+        /* --- TYPOGRAPHY --- */
         h1 { 
-            font-size: 3.5rem; 
-            letter-spacing: 8px; 
-            margin-bottom: 0.5rem; 
-            text-shadow: 0 0 20px rgba(100, 255, 218, 0.6);
-            position: relative;
+            font-size: 4rem; 
+            letter-spacing: 10px; 
+            margin: 0; 
+            text-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
             cursor: default;
+            transition: 0.3s;
         }
-
-        /* The Glitch Animation on Hover */
+        
         h1:hover {
-            animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
-            color: #fff;
-        }
-
-        @keyframes glitch {
-            0% { transform: translate(0) }
-            20% { transform: translate(-2px, 2px) }
-            40% { transform: translate(-2px, -2px) }
-            60% { transform: translate(2px, 2px) }
-            80% { transform: translate(2px, -2px) }
-            100% { transform: translate(0) }
+            text-shadow: 4px 4px 0px rgba(255,0,0,0.5);
+            transform: scale(1.02);
         }
 
         .subtitle { 
             color: #8892b0; 
-            margin-bottom: 3rem; 
-            font-size: 1rem;
-            letter-spacing: 3px;
-            min-height: 1.2em; /* Keeps space for typing effect */
+            margin-top: 1rem;
+            margin-bottom: 4rem; 
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            font-weight: bold;
+            min-height: 1.5em;
         }
 
-        /* --- INTERACTIVE TERMINAL INPUT --- */
-        .input-group {
+        /* --- THE TRIGGER BUTTON --- */
+        .trigger-btn {
+            background: transparent;
+            color: #64ffda; 
+            border: 1px solid #64ffda; 
+            padding: 15px 40px; 
+            font-size: 1rem;
+            cursor: pointer;
+            letter-spacing: 3px;
+            transition: 0.3s; 
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(100, 255, 218, 0.1);
             position: relative;
-            display: inline-block;
-            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .trigger-btn:hover { 
+            background: rgba(100, 255, 218, 0.1); 
+            box-shadow: 0 0 30px rgba(100, 255, 218, 0.4);
+            letter-spacing: 5px;
+        }
+
+        /* --- THE HIDDEN TERMINAL (Initially Hidden) --- */
+        #terminal-interface {
+            display: none; /* Hidden by default */
+            margin-top: 2rem;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         input[type="text"] {
-            background: rgba(10, 25, 47, 0.8);
+            background: rgba(2, 12, 27, 0.9);
             border: 1px solid #233554;
             color: #64ffda;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 1.2rem;
-            padding: 10px 15px;
-            width: 250px;
+            font-size: 1.5rem;
+            padding: 15px;
+            width: 300px;
             text-align: center;
             outline: none;
-            letter-spacing: 3px;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            transition: 0.3s;
+            margin-bottom: 1rem;
         }
 
         input[type="text"]:focus {
             border-color: #64ffda;
-            box-shadow: 0 0 15px rgba(100, 255, 218, 0.2);
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
         }
 
-        /* The "Submit" Button */
-        .btn { 
-            display: block;
-            margin: 1.5rem auto 0;
-            background: transparent;
-            color: #64ffda; 
-            border: 1px solid #64ffda; 
-            padding: 12px 40px; 
-            font-size: 0.9rem;
-            cursor: pointer;
-            letter-spacing: 2px;
-            transition: 0.3s; 
-            text-transform: uppercase;
-        }
-
-        .btn:hover { 
-            background: rgba(100, 255, 218, 0.15); 
-            box-shadow: 0 0 30px rgba(100, 255, 218, 0.4);
-            text-shadow: 0 0 10px #64ffda;
-        }
-
-        /* --- STATUS MESSAGES --- */
         .status {
             height: 20px;
-            margin-top: 15px;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
         }
-        .error { color: #ff5f5f; text-shadow: 0 0 10px #ff0000; }
+        .error { color: #ff5f5f; text-shadow: 0 0 10px red; }
         .success { color: #00ff41; text-shadow: 0 0 10px #00ff00; }
 
-        /* Institutional Link */
+        /* Footer Link */
         .footer-link {
             position: fixed;
             bottom: 20px;
+            width: 100%;
+            text-align: center;
+            left: 0;
             font-size: 0.7rem;
             color: #233554;
             text-decoration: none;
             z-index: 20;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             transition: 0.3s;
         }
         .footer-link:hover { color: #64ffda; }
 
-        /* Cursor Blink */
         .cursor { animation: blink 1s step-end infinite; }
         @keyframes blink { 50% { opacity: 0; } }
+
     </style>
 </head>
 <body>
@@ -158,92 +152,82 @@
     <div id="particles-js"></div>
 
     <div class="container">
-        <h1>VESTIGIA</h1>
-        
+        <h1>VESTIGIA LABS</h1>
         <p class="subtitle"><span id="typewriter"></span><span class="cursor">_</span></p>
         
-        <div class="login-interface">
-            <input type="text" id="passwordInput" placeholder="ENTER CLEARANCE CODE" autocomplete="off" onkeypress="handleEnter(event)">
+        <button id="startBtn" class="trigger-btn" onclick="openTerminal()">[ ENTER TERMINAL CODE ]</button>
+
+        <div id="terminal-interface">
+            <input type="text" id="passwordInput" placeholder="ACCESS CODE" autocomplete="off" onkeypress="handleEnter(event)">
             <div id="statusMessage" class="status"></div>
-            <button class="btn" onclick="authenticate()">INITIALIZE UPLINK</button>
         </div>
     </div>
 
-    <a href="mailto:tycho@vestigialabs.com" class="footer-link">SECURE CHANNEL: tycho@vestigialabs.com</a>
+    <a href="mailto:tycho@vestigialabs.com" class="footer-link">SECURE LINE: tycho@vestigialabs.com</a>
 
     <script>
-        /* --- 1. PARTICLE SYSTEM CONFIGURATION --- */
+        /* --- 1. PARTICLES --- */
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#64ffda" }, /* Electric Cyan Particles */
+                "number": { "value": 60 },
+                "color": { "value": "#64ffda" },
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.5, "random": true },
+                "opacity": { "value": 0.3, "random": true },
                 "size": { "value": 3, "random": true },
-                "line_linked": { 
-                    "enable": true, 
-                    "distance": 150, 
-                    "color": "#64ffda", 
-                    "opacity": 0.4, 
-                    "width": 1 
-                },
-                "move": { "enable": true, "speed": 2 }
+                "line_linked": { "enable": true, "distance": 150, "color": "#64ffda", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 1.5 }
             },
             "interactivity": {
                 "detect_on": "canvas",
-                "events": { 
-                    "onhover": { "enable": true, "mode": "grab" }, /* Connects lines to mouse */
-                    "onclick": { "enable": true, "mode": "push" } 
-                },
-                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } } }
-            },
-            "retina_detect": true
+                "events": { "onhover": { "enable": true, "mode": "grab" } },
+                "modes": { "grab": { "distance": 180, "line_linked": { "opacity": 0.6 } } }
+            }
         });
 
-        /* --- 2. TYPING EFFECT --- */
-        const textToType = "INSTITUTIONAL FORENSIC INTELLIGENCE // ALPHA";
-        const typeWriterElement = document.getElementById('typewriter');
-        let i = 0;
-
-        function typeWriter() {
-            if (i < textToType.length) {
-                typeWriterElement.innerHTML += textToType.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50); // Speed of typing
+        /* --- 2. TYPEWRITER --- */
+        const text = "INSTITUTIONAL FORENSIC INTELLIGENCE";
+        const typeElem = document.getElementById('typewriter');
+        let idx = 0;
+        
+        function type() {
+            if (idx < text.length) {
+                typeElem.innerHTML += text.charAt(idx);
+                idx++;
+                setTimeout(type, 40);
             }
         }
-        // Start typing after page load
-        window.onload = typeWriter;
+        window.onload = type;
 
-        /* --- 3. PASSWORD LOGIC (ALPHA101) --- */
-        function handleEnter(e) {
-            if (e.key === 'Enter') authenticate();
+        /* --- 3. TERMINAL LOGIC --- */
+        function openTerminal() {
+            // Hide button, show input
+            document.getElementById('startBtn').style.display = 'none';
+            document.getElementById('terminal-interface').style.display = 'block';
+            document.getElementById('passwordInput').focus();
         }
 
-        function authenticate() {
+        function handleEnter(e) {
+            if (e.key === 'Enter') checkAccess();
+        }
+
+        function checkAccess() {
             const input = document.getElementById('passwordInput');
             const status = document.getElementById('statusMessage');
-            const code = input.value;
-
-            if (code === "ALPHA101") {
-                // SUCCESS SEQUENCE
+            
+            if (input.value === "ALPHA101") {
                 status.className = "status success";
                 status.innerText = "ACCESS GRANTED. DECRYPTING...";
                 input.style.borderColor = "#00ff41";
-                
-                // 1.5 second delay to feel "real", then open email
                 setTimeout(() => {
-                    window.location.href = "mailto:tycho@vestigialabs.com?subject=ACCESS%20REQUEST:%20ALPHA101&body=Clearance%20Code:%20Verified.%0A%0A[Enter%20Institutional%20Request]";
+                    window.location.href = "mailto:tycho@vestigialabs.com?subject=ACCESS%20REQUEST:%20ALPHA101&body=Clearance%20Code:%20Verified.";
                 }, 1500);
             } else {
-                // FAILURE SEQUENCE
                 status.className = "status error";
-                status.innerText = "ERROR: INVALID CREDENTIALS";
+                status.innerText = "ACCESS DENIED";
                 input.style.borderColor = "#ff5f5f";
-                
-                // Shake animation
-                input.style.animation = "shake 0.5s";
-                setTimeout(() => { input.style.animation = "none"; }, 500);
+                input.value = "";
+                input.style.animation = "shake 0.4s";
+                setTimeout(() => { input.style.animation = "none"; }, 400);
             }
         }
     </script>
