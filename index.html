@@ -8,10 +8,11 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <style>
-        /* --- CORE VISUALS --- */
+        /* --- 1. THE DEEP VOID BACKGROUND --- */
         body { 
-            background-color: #020c1b; /* Deep Navy */
-            color: #64ffda; /* Electric Cyan */
+            /* This creates a glowing center that fades into deep black at the edges */
+            background: radial-gradient(circle at center, #0b1d3a 0%, #020c1b 70%, #000000 100%);
+            color: #64ffda;
             font-family: 'Courier New', Courier, monospace; 
             margin: 0; 
             overflow: hidden;
@@ -25,126 +26,106 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background-color: #020c1b;
             z-index: 1;
         }
 
-        /* Main Content Box */
+        /* --- 2. THE UI CONTAINER --- */
         .container { 
             position: relative;
             z-index: 10;
             text-align: center; 
             padding: 4rem;
-            max-width: 700px;
+            /* Glassmorphism: Frosted glass effect */
+            background: rgba(2, 12, 27, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 0 80px rgba(0, 0, 0, 0.8);
         }
 
-        /* --- TYPOGRAPHY --- */
         h1 { 
-            font-size: 4rem; 
-            letter-spacing: 10px; 
+            font-size: 3.5rem; 
+            letter-spacing: 12px; 
             margin: 0; 
-            text-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
+            /* Subtle glow on the text */
+            text-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
             cursor: default;
-            transition: 0.3s;
-        }
-        
-        h1:hover {
-            text-shadow: 4px 4px 0px rgba(255,0,0,0.5);
-            transform: scale(1.02);
         }
 
         .subtitle { 
             color: #8892b0; 
-            margin-top: 1rem;
-            margin-bottom: 4rem; 
-            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 3rem; 
+            font-size: 0.9rem;
             letter-spacing: 4px;
-            font-weight: bold;
-            min-height: 1.5em;
+            text-transform: uppercase;
+            font-weight: 600;
         }
 
-        /* --- THE TRIGGER BUTTON --- */
+        /* --- 3. THE BUTTON & INPUT --- */
         .trigger-btn {
-            background: transparent;
+            background: rgba(100, 255, 218, 0.05);
             color: #64ffda; 
             border: 1px solid #64ffda; 
-            padding: 15px 40px; 
-            font-size: 1rem;
+            padding: 18px 40px; 
+            font-size: 0.9rem;
             cursor: pointer;
             letter-spacing: 3px;
-            transition: 0.3s; 
+            transition: all 0.4s ease;
             text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(100, 255, 218, 0.1);
-            position: relative;
-            overflow: hidden;
         }
 
         .trigger-btn:hover { 
-            background: rgba(100, 255, 218, 0.1); 
-            box-shadow: 0 0 30px rgba(100, 255, 218, 0.4);
-            letter-spacing: 5px;
+            background: rgba(100, 255, 218, 0.2); 
+            box-shadow: 0 0 40px rgba(100, 255, 218, 0.3);
+            letter-spacing: 6px; /* Expands when hovered */
         }
 
-        /* --- THE HIDDEN TERMINAL (Initially Hidden) --- */
         #terminal-interface {
-            display: none; /* Hidden by default */
+            display: none;
             margin-top: 2rem;
-            animation: slideDown 0.5s ease-out;
+            animation: fadeIn 0.8s ease-out;
         }
 
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         input[type="text"] {
-            background: rgba(2, 12, 27, 0.9);
-            border: 1px solid #233554;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #1d4ed8;
             color: #64ffda;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 1.5rem;
-            padding: 15px;
-            width: 300px;
+            font-size: 1.2rem;
+            padding: 12px;
+            width: 280px;
             text-align: center;
             outline: none;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 1rem;
+            transition: 0.3s;
         }
-
+        
         input[type="text"]:focus {
             border-color: #64ffda;
-            box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+            box-shadow: 0 0 30px rgba(29, 78, 216, 0.5);
         }
 
-        .status {
-            height: 20px;
-            margin-top: 10px;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-        }
-        .error { color: #ff5f5f; text-shadow: 0 0 10px red; }
-        .success { color: #00ff41; text-shadow: 0 0 10px #00ff00; }
-
-        /* Footer Link */
         .footer-link {
             position: fixed;
-            bottom: 20px;
+            bottom: 30px;
             width: 100%;
             text-align: center;
             left: 0;
             font-size: 0.7rem;
-            color: #233554;
+            color: #475569;
             text-decoration: none;
             z-index: 20;
             letter-spacing: 2px;
             transition: 0.3s;
         }
         .footer-link:hover { color: #64ffda; }
-
-        .cursor { animation: blink 1s step-end infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
-
     </style>
 </head>
 <body>
@@ -153,81 +134,100 @@
 
     <div class="container">
         <h1>VESTIGIA LABS</h1>
-        <p class="subtitle"><span id="typewriter"></span><span class="cursor">_</span></p>
+        <p class="subtitle"><span id="typewriter"></span><span class="cursor">|</span></p>
         
-        <button id="startBtn" class="trigger-btn" onclick="openTerminal()">[ ENTER TERMINAL CODE ]</button>
+        <button id="startBtn" class="trigger-btn" onclick="openTerminal()">[ INITIALIZE UPLINK ]</button>
 
         <div id="terminal-interface">
-            <input type="text" id="passwordInput" placeholder="ACCESS CODE" autocomplete="off" onkeypress="handleEnter(event)">
-            <div id="statusMessage" class="status"></div>
+            <input type="text" id="passwordInput" placeholder="ENTER ACCESS KEY" autocomplete="off" onkeypress="handleEnter(event)">
+            <div id="statusMessage" style="margin-top:15px; height:20px; font-size:0.8rem; letter-spacing:2px;"></div>
         </div>
     </div>
 
-    <a href="mailto:tycho@vestigialabs.com" class="footer-link">SECURE LINE: tycho@vestigialabs.com</a>
+    <a href="mailto:tycho@vestigialabs.com" class="footer-link">ENCRYPTED CHANNEL: tycho@vestigialabs.com</a>
 
     <script>
-        /* --- 1. PARTICLES --- */
+        /* --- 1. CONFIGURING THE "NEURAL NETWORK" LOOK --- */
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 60 },
-                "color": { "value": "#64ffda" },
+                "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#64ffda" }, /* Cyan Nodes */
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.3, "random": true },
+                "opacity": { 
+                    "value": 0.5, 
+                    "random": true, /* Twinkling effect */
+                    "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } 
+                },
                 "size": { "value": 3, "random": true },
-                "line_linked": { "enable": true, "distance": 150, "color": "#64ffda", "opacity": 0.2, "width": 1 },
-                "move": { "enable": true, "speed": 1.5 }
+                "line_linked": { 
+                    "enable": true, 
+                    "distance": 150, 
+                    "color": "#1d4ed8", /* Dark Blue Lines (Subtler) */
+                    "opacity": 0.3, 
+                    "width": 1 
+                },
+                "move": { 
+                    "enable": true, 
+                    "speed": 0.8, /* Slow, heavy movement */
+                    "direction": "none", 
+                    "random": false, 
+                    "straight": false, 
+                    "out_mode": "out", 
+                    "bounce": false, 
+                }
             },
             "interactivity": {
                 "detect_on": "canvas",
-                "events": { "onhover": { "enable": true, "mode": "grab" } },
-                "modes": { "grab": { "distance": 180, "line_linked": { "opacity": 0.6 } } }
-            }
+                "events": { 
+                    "onhover": { "enable": true, "mode": "grab" }, 
+                    "onclick": { "enable": true, "mode": "push" } 
+                },
+                "modes": { 
+                    "grab": { "distance": 200, "line_linked": { "opacity": 0.8 } },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
         });
 
-        /* --- 2. TYPEWRITER --- */
+        /* --- 2. TYPING EFFECT --- */
         const text = "INSTITUTIONAL FORENSIC INTELLIGENCE";
         const typeElem = document.getElementById('typewriter');
         let idx = 0;
-        
         function type() {
             if (idx < text.length) {
                 typeElem.innerHTML += text.charAt(idx);
                 idx++;
-                setTimeout(type, 40);
+                setTimeout(type, 50);
             }
         }
         window.onload = type;
 
         /* --- 3. TERMINAL LOGIC --- */
         function openTerminal() {
-            // Hide button, show input
             document.getElementById('startBtn').style.display = 'none';
             document.getElementById('terminal-interface').style.display = 'block';
             document.getElementById('passwordInput').focus();
         }
 
-        function handleEnter(e) {
-            if (e.key === 'Enter') checkAccess();
-        }
+        function handleEnter(e) { if (e.key === 'Enter') checkAccess(); }
 
         function checkAccess() {
             const input = document.getElementById('passwordInput');
             const status = document.getElementById('statusMessage');
             
             if (input.value === "ALPHA101") {
-                status.className = "status success";
+                status.style.color = "#00ff41";
                 status.innerText = "ACCESS GRANTED. DECRYPTING...";
                 input.style.borderColor = "#00ff41";
                 setTimeout(() => {
                     window.location.href = "mailto:tycho@vestigialabs.com?subject=ACCESS%20REQUEST:%20ALPHA101&body=Clearance%20Code:%20Verified.";
                 }, 1500);
             } else {
-                status.className = "status error";
+                status.style.color = "#ff5f5f";
                 status.innerText = "ACCESS DENIED";
                 input.style.borderColor = "#ff5f5f";
                 input.value = "";
-                input.style.animation = "shake 0.4s";
-                setTimeout(() => { input.style.animation = "none"; }, 400);
             }
         }
     </script>
