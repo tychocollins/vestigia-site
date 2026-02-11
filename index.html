@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VESTIGIA LABS | SENTINEL SYSTEM</title>
+    <title>VESTIGIA LABS</title>
     
     <meta name="theme-color" content="#020c1b">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <style>
-        /* --- 1. THE DEEP VOID BACKGROUND --- */
+        /* --- CRITICAL IOS FIXES --- */
+        html {
+            /* This paints the Safari address bars and overscroll area */
+            background-color: #020c1b; 
+            height: 100%;
+        }
+
         body { 
-            /* Darkened center for better contrast on mobile screens */
+            /* The Gradient Background */
             background: radial-gradient(circle at center, #061229 0%, #020c1b 70%, #000000 100%);
             color: #64ffda;
             font-family: 'Courier New', Courier, monospace; 
             margin: 0; 
             overflow: hidden;
-            /* 100dvh uses the actual screen height, ignoring the browser URL bar */
+            /* Prevents the white "bounce" when scrolling on mobile */
+            overscroll-behavior: none;
             height: 100dvh; 
             display: flex;
             justify-content: center;
@@ -33,7 +41,6 @@
             z-index: 1;
         }
 
-        /* --- 2. THE UI CONTAINER --- */
         .container { 
             position: relative;
             z-index: 10;
@@ -44,7 +51,6 @@
         }
 
         h1 { 
-            /* Responsive font size: scales between 2.5rem and 3.5rem based on screen width */
             font-size: clamp(2.5rem, 8vw, 3.5rem); 
             letter-spacing: clamp(5px, 2vw, 12px); 
             margin: 0; 
@@ -63,7 +69,6 @@
             font-weight: 600;
         }
 
-        /* --- 3. THE BUTTON & INPUT --- */
         .trigger-btn {
             background: rgba(100, 255, 218, 0.05);
             color: #64ffda; 
@@ -74,7 +79,6 @@
             letter-spacing: 3px;
             transition: all 0.4s ease;
             text-transform: uppercase;
-            /* Prevents double-tap zoom delay on mobile */
             touch-action: manipulation; 
         }
 
@@ -100,7 +104,7 @@
             border: 1px solid #1d4ed8;
             color: #64ffda;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 1rem; /* 16px font prevents iOS zoom-in on focus */
+            font-size: 16px; /* Prevents zoom */
             padding: 12px;
             width: 80%; 
             max-width: 280px;
@@ -134,10 +138,9 @@
     </div>
 
     <script>
-        /* --- 1. PARTICLE CONFIGURATION --- */
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#64ffda" },
                 "shape": { "type": "circle" },
                 "opacity": { 
@@ -177,7 +180,6 @@
             "retina_detect": true
         });
 
-        /* --- 2. TYPING EFFECT --- */
         const text = "INSTITUTIONAL FORENSIC INTELLIGENCE";
         const typeElem = document.getElementById('typewriter');
         let idx = 0;
@@ -190,7 +192,6 @@
         }
         window.onload = type;
 
-        /* --- 3. TERMINAL LOGIC --- */
         function openTerminal() {
             document.getElementById('startBtn').style.display = 'none';
             document.getElementById('terminal-interface').style.display = 'block';
