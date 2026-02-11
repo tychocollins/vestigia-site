@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VESTIGIA LABS</title>
+    <title>VESTIGIA LABS | SENTINEL SYSTEM</title>
     
-    <meta name="theme-color" content="#020c1b">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-capable" content="yes">
     
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <style>
+        /* --- VESTIGIA LABS: LIGHT INSTITUTIONAL THEME --- */
         html {
-            background-color: #020c1b; 
+            background-color: #ffffff; 
             height: 100%;
         }
 
         body { 
-            background: radial-gradient(circle at center, #061229 0%, #020c1b 70%, #000000 100%);
-            color: #64ffda;
+            background: #ffffff; 
+            color: #020c1b; 
             font-family: 'Courier New', Courier, monospace; 
             margin: 0; 
             overflow: hidden;
@@ -35,6 +36,7 @@
             width: 100%;
             height: 100%;
             z-index: 1;
+            opacity: 0.15; 
         }
 
         .container { 
@@ -51,7 +53,7 @@
             font-size: clamp(1.8rem, 6vw, 3.5rem); 
             letter-spacing: clamp(2px, 1vw, 12px); 
             margin: 0; 
-            text-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
+            color: #020c1b; 
             cursor: default;
             line-height: 1;
             font-weight: 700;
@@ -71,7 +73,7 @@
             display: inline-block;
             animation: blink 1s step-end infinite;
             font-weight: bold;
-            color: #64ffda;
+            color: #64ffda; 
         }
 
         @keyframes blink {
@@ -80,12 +82,10 @@
         }
 
         .trigger-btn {
-            background: rgba(100, 255, 218, 0.05);
-            color: #64ffda; 
-            border: 1px solid #64ffda; 
-            /* REDUCED: Slimmer padding for mobile (10px min height) */
+            background: #020c1b; 
+            color: #ffffff; 
+            border: 1px solid #020c1b; 
             padding: clamp(10px, 1.8vh, 18px) clamp(20px, 3.5vw, 45px);
-            /* REDUCED: Smaller font on mobile for a sleeker look */
             font-size: clamp(0.75rem, 1.4vw, 0.95rem);
             cursor: pointer;
             letter-spacing: 2px;
@@ -95,8 +95,9 @@
         }
 
         .trigger-btn:hover { 
-            background: rgba(100, 255, 218, 0.2); 
-            box-shadow: 0 0 40px rgba(100, 255, 218, 0.3);
+            background: #ffffff;
+            color: #020c1b; 
+            box-shadow: 0 0 20px rgba(2, 12, 27, 0.1);
             letter-spacing: 4px; 
         }
 
@@ -112,9 +113,9 @@
         }
 
         input[type="text"] {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid #1d4ed8;
-            color: #64ffda;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #020c1b;
+            color: #020c1b;
             font-family: 'Courier New', Courier, monospace;
             font-size: 16px; 
             padding: 12px;
@@ -125,11 +126,6 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             transition: 0.3s;
-        }
-        
-        input[type="text"]:focus {
-            border-color: #64ffda;
-            box-shadow: 0 0 30px rgba(29, 78, 216, 0.5);
         }
     </style>
 </head>
@@ -153,41 +149,22 @@
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#64ffda" },
+                "color": { "value": "#020c1b" },
                 "shape": { "type": "circle" },
-                "opacity": { 
-                    "value": 0.5, 
-                    "random": true, 
-                    "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } 
-                },
+                "opacity": { "value": 0.5, "random": true },
                 "size": { "value": 3, "random": true },
                 "line_linked": { 
                     "enable": true, 
                     "distance": 150, 
-                    "color": "#1d4ed8", 
+                    "color": "#020c1b", 
                     "opacity": 0.3, 
                     "width": 1 
                 },
-                "move": { 
-                    "enable": true, 
-                    "speed": 0.8, 
-                    "direction": "none", 
-                    "random": false, 
-                    "straight": false, 
-                    "out_mode": "out", 
-                    "bounce": false, 
-                }
+                "move": { "enable": true, "speed": 0.8 }
             },
             "interactivity": {
                 "detect_on": "canvas",
-                "events": { 
-                    "onhover": { "enable": true, "mode": "grab" }, 
-                    "onclick": { "enable": true, "mode": "push" } 
-                },
-                "modes": { 
-                    "grab": { "distance": 200, "line_linked": { "opacity": 0.8 } },
-                    "push": { "particles_nb": 4 }
-                }
+                "events": { "onhover": { "enable": true, "mode": "grab" } }
             },
             "retina_detect": true
         });
@@ -215,22 +192,18 @@
         function checkAccess() {
             const input = document.getElementById('passwordInput');
             const status = document.getElementById('statusMessage');
-            
             if (input.value === "ALPHA101") {
                 status.style.color = "#00ff41";
                 status.innerText = "ACCESS GRANTED. DECRYPTING...";
-                input.style.borderColor = "#00ff41";
                 setTimeout(() => {
                     window.location.href = "mailto:tycho@vestigialabs.com?subject=ACCESS%20REQUEST:%20ALPHA101&body=Clearance%20Code:%20Verified.";
                 }, 1500);
             } else {
                 status.style.color = "#ff5f5f";
                 status.innerText = "ACCESS DENIED";
-                input.style.borderColor = "#ff5f5f";
                 input.value = "";
             }
         }
     </script>
-
 </body>
 </html>
