@@ -48,7 +48,6 @@
 
         h1 { 
             white-space: nowrap; 
-            /* UPDATED: Larger minimum mobile size (1.8rem) */
             font-size: clamp(1.8rem, 6vw, 3.5rem); 
             letter-spacing: clamp(2px, 1vw, 12px); 
             margin: 0; 
@@ -61,8 +60,7 @@
         .subtitle { 
             color: #8892b0; 
             margin-top: 1.5rem;
-            margin-bottom: 3.5rem; 
-            /* UPDATED: Larger minimum mobile size (0.9rem) */
+            margin-bottom: 3rem; 
             font-size: clamp(0.9rem, 2vw, 1.1rem);
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -85,11 +83,12 @@
             background: rgba(100, 255, 218, 0.05);
             color: #64ffda; 
             border: 1px solid #64ffda; 
-            /* UPDATED: Slightly taller padding for mobile presence */
-            padding: clamp(14px, 2vh, 18px) clamp(30px, 4vw, 45px);
-            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+            /* REDUCED: Slimmer padding for mobile (10px min height) */
+            padding: clamp(10px, 1.8vh, 18px) clamp(20px, 3.5vw, 45px);
+            /* REDUCED: Smaller font on mobile for a sleeker look */
+            font-size: clamp(0.75rem, 1.4vw, 0.95rem);
             cursor: pointer;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             transition: all 0.4s ease;
             text-transform: uppercase;
             touch-action: manipulation; 
@@ -98,7 +97,7 @@
         .trigger-btn:hover { 
             background: rgba(100, 255, 218, 0.2); 
             box-shadow: 0 0 40px rgba(100, 255, 218, 0.3);
-            letter-spacing: 5px; 
+            letter-spacing: 4px; 
         }
 
         #terminal-interface {
