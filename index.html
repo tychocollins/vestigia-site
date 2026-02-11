@@ -14,19 +14,16 @@
     <style>
         /* --- CRITICAL IOS FIXES --- */
         html {
-            /* This paints the Safari address bars and overscroll area */
             background-color: #020c1b; 
             height: 100%;
         }
 
         body { 
-            /* The Gradient Background */
             background: radial-gradient(circle at center, #061229 0%, #020c1b 70%, #000000 100%);
             color: #64ffda;
             font-family: 'Courier New', Courier, monospace; 
             margin: 0; 
             overflow: hidden;
-            /* Prevents the white "bounce" when scrolling on mobile */
             overscroll-behavior: none;
             height: 100dvh; 
             display: flex;
@@ -57,6 +54,7 @@
             text-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
             cursor: default;
             line-height: 1.2;
+            font-weight: 700;
         }
 
         .subtitle { 
@@ -67,6 +65,19 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 600;
+        }
+
+        /* The Blinking Cursor */
+        .cursor {
+            display: inline-block;
+            animation: blink 1s step-end infinite;
+            font-weight: bold;
+            color: #64ffda;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         .trigger-btn {
@@ -104,7 +115,7 @@
             border: 1px solid #1d4ed8;
             color: #64ffda;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 16px; /* Prevents zoom */
+            font-size: 16px; 
             padding: 12px;
             width: 80%; 
             max-width: 280px;
@@ -127,7 +138,8 @@
 
     <div class="container">
         <h1>VESTIGIA<br>LABS</h1>
-        <p class="subtitle"><span id="typewriter"></span><span class="cursor">|</span></p>
+        
+        <p class="subtitle"><span id="typewriter"></span><span class="cursor">_</span></p>
         
         <button id="startBtn" class="trigger-btn" onclick="openTerminal()">[ INITIALIZE UPLINK ]</button>
 
