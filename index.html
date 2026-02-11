@@ -3,24 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vestigia Labs | Institutional Intelligence</title>
+    <title>VESTIGIA LABS | SENTINEL SYSTEM</title>
     <style>
-        body { background-color: #0a0a0a; color: #00ff41; font-family: 'Courier New', Courier, monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container { text-align: center; }
-        h1 { font-size: 2.5rem; letter-spacing: 5px; margin-bottom: 0.5rem; }
-        p { color: #888; margin-bottom: 2rem; }
-        .blink { animation: blinker 1s linear infinite; }
+        /* THE DEEP BLUE THEME */
+        body { 
+            background-color: #020c1b; /* Deep Navy/Black */
+            color: #64ffda; /* Electric Cyan */
+            font-family: 'Courier New', Courier, monospace; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            overflow: hidden;
+        }
+
+        .container { 
+            text-align: center; 
+            z-index: 2;
+            padding: 2rem;
+            border: 1px solid #112240;
+            background: rgba(2, 12, 27, 0.9);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.1);
+        }
+
+        h1 { 
+            font-size: 3rem; 
+            letter-spacing: 8px; 
+            margin-bottom: 0.5rem; 
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+        }
+
+        p { 
+            color: #8892b0; /* Muted Blue-Grey */
+            margin-bottom: 3rem; 
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        /* THE PASSWORD BUTTON */
+        .btn { 
+            background: transparent;
+            color: #64ffda; 
+            text-decoration: none; 
+            border: 1px solid #64ffda; 
+            padding: 15px 30px; 
+            font-size: 1rem;
+            transition: 0.3s; 
+            cursor: pointer;
+            letter-spacing: 2px;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.1);
+        }
+
+        .btn:hover { 
+            background: rgba(100, 255, 218, 0.1); 
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
+            transform: scale(1.05);
+        }
+
+        .blink { animation: blinker 1.5s linear infinite; }
         @keyframes blinker { 50% { opacity: 0; } }
-        a { color: #fff; text-decoration: none; border: 1px solid #333; padding: 10px 20px; transition: 0.3s; }
-        a:hover { background: #00ff41; color: #000; border-color: #00ff41; }
+
+        /* CONTACT LINK (For investors who don't have the password) */
+        .footer-link {
+            margin-top: 3rem;
+            display: block;
+            color: #233554;
+            font-size: 0.7rem;
+            text-decoration: none;
+        }
+        .footer-link:hover { color: #64ffda; }
+
+        /* ACCESS DENIED RED FLASH */
+        .denied {
+            animation: shake 0.5s;
+            color: #ff5f5f;
+            text-shadow: 0 0 10px red;
+        }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>VESTIGIA LABS<span class="blink">_</span></h1>
-        <p>FORENSIC ALPHA FOR INSTITUTIONAL CAPITAL.</p>
-        <br>
-        <a href="mailto:tycho@vestigialabs.com">REQUEST TERMINAL ACCESS</a>
+        <h1 id="title">VESTIGIA LABS<span class="blink">_</span></h1>
+        <p>FORENSIC INTELLIGENCE // SYSTEM SECURE</p>
+        
+        <button class="btn" onclick="requestAccess()">REQUEST TERMINAL ACCESS</button>
+
+        <a href="mailto:tycho@vestigialabs.com" class="footer-link">INSTITUTIONAL INQUIRIES // DIRECT LINE</a>
     </div>
+
+    <script>
+        function requestAccess() {
+            // PROMPT THE USER
+            let code = prompt("ENTER AUTHORIZATION CODE:");
+            
+            // THE PASSWORD IS "ALPHA" (Case sensitive)
+            if (code === "ALPHA") {
+                // SUCCESS
+                alert("ACCESS GRANTED. INITIALIZING UPLINK...");
+                window.location.href = "mailto:tycho@vestigialabs.com?subject=TERMINAL%20ACCESS%20REQUEST&body=Clearance%20Code:%20ALPHA%0A%0A[Enter%20Message]";
+            } else if (code !== null) {
+                // FAILURE (If they typed something wrong)
+                let title = document.getElementById("title");
+                title.innerText = "ACCESS DENIED";
+                title.classList.add("denied");
+                
+                // Reset text after 2 seconds
+                setTimeout(() => {
+                    title.innerText = "VESTIGIA LABS_";
+                    title.classList.remove("denied");
+                }, 2000);
+            }
+        }
+    </script>
+
 </body>
 </html>
