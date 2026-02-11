@@ -2,18 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VESTIGIA LABS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VESTIGIA LABS | SENTINEL SYSTEM</title>
+    
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
     <style>
-        /* --- THE HYBRID TERMINAL THEME --- */
-        body, html {
-            margin: 0;
-            padding: 0;
-            background-color: #020c1b; /* BRAND NAVY FRAME */
-            font-family: 'Courier New', Courier, monospace;
+        /* --- RESTORED ORIGINAL TERMINAL THEME --- */
+        html {
+            background-color: #020c1b; 
             height: 100%;
+        }
+
+        body { 
+            background: radial-gradient(circle at center, #0a192f 0%, #020c1b 100%); 
+            color: #64ffda; 
+            font-family: 'Courier New', Courier, monospace; 
+            margin: 0; 
             overflow: hidden;
+            overscroll-behavior: none;
+            height: 100dvh; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -26,87 +34,93 @@
             z-index: 1;
         }
 
-        /* THE WHITE "DATA TERMINAL" WINDOW */
-        .terminal-window {
+        .container { 
             position: relative;
             z-index: 10;
-            background: #ffffff; /* CLEAN WHITE CORE */
-            width: 90%;
-            max-width: 900px;
-            height: 80vh;
-            border-left: 5px solid #64ffda; /* THE CYAN GLOW STRIP */
-            box-shadow: 0 0 50px rgba(100, 255, 218, 0.2);
-            display: flex;
-            flex-direction: column;
-            padding: 40px;
-            box-sizing: border-box;
+            text-align: center; 
+            padding: 1rem;
+            width: 100%;
+            max-width: 1000px;
         }
 
-        .header-bar {
-            border-bottom: 1px solid #020c1b;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-            color: #020c1b;
-            font-weight: bold;
-            font-size: 0.8rem;
+        h1 { 
+            white-space: nowrap; 
+            font-size: clamp(1.8rem, 6vw, 3.5rem); 
+            letter-spacing: clamp(2px, 1vw, 12px); 
+            margin: 0; 
+            color: #ccd6f6; 
+            text-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+            cursor: default;
+            line-height: 1;
+            font-weight: 700;
         }
 
-        h1 {
-            color: #020c1b;
-            font-size: clamp(1.5rem, 5vw, 3rem);
-            margin: 0;
-            letter-spacing: 10px;
-            text-transform: uppercase;
-        }
-
-        .status-tag {
-            background: #020c1b;
-            color: #64ffda;
-            padding: 2px 10px;
-            font-size: 0.7rem;
-        }
-
-        .content-area {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .subtitle {
-            color: #8892b0;
+        .subtitle { 
+            color: #8892b0; 
+            margin-top: 1.5rem;
+            margin-bottom: 3rem; 
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
             letter-spacing: 3px;
-            font-size: 1rem;
-            margin-bottom: 40px;
             text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .cursor {
+            display: inline-block;
+            animation: blink 1s step-end infinite;
+            font-weight: bold;
+            color: #64ffda; 
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         .trigger-btn {
-            background: #020c1b;
-            color: #ffffff;
-            border: none;
-            padding: 15px 40px;
-            font-family: inherit;
-            font-size: 1rem;
+            background: transparent;
+            color: #64ffda; 
+            border: 1px solid #64ffda; 
+            padding: clamp(10px, 1.8vh, 18px) clamp(20px, 3.5vw, 45px);
+            font-size: clamp(0.75rem, 1.4vw, 0.95rem);
             cursor: pointer;
-            transition: all 0.3s ease;
             letter-spacing: 2px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.1);
         }
 
-        .trigger-btn:hover {
-            background: #64ffda;
-            color: #020c1b;
-            transform: translateY(-2px);
+        .trigger-btn:hover { 
+            background: rgba(100, 255, 218, 0.1);
+            box-shadow: 0 0 25px rgba(100, 255, 218, 0.3);
+            letter-spacing: 4px; 
         }
 
-        .footer-note {
-            margin-top: auto;
-            font-size: 0.7rem;
-            color: #8892b0;
-            text-align: right;
+        #terminal-interface {
+            display: none;
+            margin-top: 2rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        input[type="text"] {
+            background: rgba(2, 12, 27, 0.8);
+            border: 1px solid #64ffda;
+            color: #64ffda;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px; 
+            padding: 12px;
+            width: 90%; 
+            max-width: 350px;
+            text-align: center;
+            outline: none;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            box-shadow: inset 0 0 10px rgba(100, 255, 218, 0.1);
         }
     </style>
 </head>
@@ -114,32 +128,78 @@
 
     <div id="particles-js"></div>
 
-    <div class="terminal-window">
-        <div class="header-bar">
-            <span>SECURE LINK: ESTABLISHED</span>
-            <span class="status-tag">SYSTEM ACTIVE</span>
-        </div>
+    <div class="container">
+        <h1>VESTIGIA LABS</h1>
+        <p class="subtitle"><span id="typewriter"></span><span class="cursor">_</span></p>
+        
+        <button id="startBtn" class="trigger-btn" onclick="openTerminal()">[ INITIALIZE UPLINK ]</button>
 
-        <div class="content-area">
-            <h1>VESTIGIA LABS</h1>
-            <p class="subtitle">Institutional Forensic Intelligence</p>
-            <button class="trigger-btn" onclick="location.href='mailto:tycho@vestigialabs.com'">[ INITIALIZE UPLINK ]</button>
-        </div>
-
-        <div class="footer-note">
-            © 2026 VESTIGIA LABS | SENTINEL_V1.04
+        <div id="terminal-interface">
+            <input type="text" id="passwordInput" placeholder="ENTER ACCESS KEY" autocomplete="off" onkeypress="handleEnter(event)">
+            <div id="statusMessage" style="margin-top:15px; height:20px; font-size:0.8rem; letter-spacing:2px;"></div>
         </div>
     </div>
 
     <script>
+        /* --- RESTORED CYAN PARTICLES --- */
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 80 },
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#64ffda" },
-                "line_linked": { "enable": true, "color": "#64ffda", "opacity": 0.2 },
-                "move": { "speed": 1 }
-            }
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3, "random": true },
+                "size": { "value": 2, "random": true },
+                "line_linked": { 
+                    "enable": true, 
+                    "distance": 150, 
+                    "color": "#64ffda", 
+                    "opacity": 0.2, 
+                    "width": 1 
+                },
+                "move": { "enable": true, "speed": 1.2 }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" } }
+            },
+            "retina_detect": true
         });
+
+        const text = "INSTITUTIONAL FORENSIC INTELLIGENCE";
+        const typeElem = document.getElementById('typewriter');
+        let idx = 0;
+        function type() {
+            if (idx < text.length) {
+                typeElem.innerHTML += text.charAt(idx);
+                idx++;
+                setTimeout(type, 50);
+            }
+        }
+        window.onload = type;
+
+        function openTerminal() {
+            document.getElementById('startBtn').style.display = 'none';
+            document.getElementById('terminal-interface').style.display = 'block';
+            document.getElementById('passwordInput').focus();
+        }
+
+        function handleEnter(e) { if (e.key === 'Enter') checkAccess(); }
+
+        function checkAccess() {
+            const input = document.getElementById('passwordInput');
+            const status = document.getElementById('statusMessage');
+            if (input.value.toUpperCase() === "ALPHA101") {
+                status.style.color = "#64ffda";
+                status.innerText = "ACCESS GRANTED. DECRYPTING...";
+                setTimeout(() => {
+                    window.location.href = "mailto:tycho@vestigialabs.com?subject=ACCESS%20REQUEST:%20ALPHA101&body=Clearance%20Code:%20Verified.";
+                }, 1500);
+            } else {
+                status.style.color = "#ff5f5f";
+                status.innerText = "ACCESS DENIED";
+                input.value = "";
+            }
+        }
     </script>
 </body>
 </html>
