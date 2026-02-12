@@ -3,103 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vestigia Labs</title>
+    <title>VESTIGIA LABS</title>
     <link rel="icon" type="image/png" href="trail.png">
     <style>
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        body, html {
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #1D2A57; /* Institutional Deep Navy */
-        }
-        header {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /* Restored the "Deep Space" gradient */
+            background: radial-gradient(circle, #061229 0%, #020c1b 100%);
+            font-family: 'Courier New', Courier, monospace;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background: #ffffff;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        .logo-img {
-            height: 45px; /* Scaled for institutional clarity */
-            width: auto;
-        }
-        .hero {
-            padding: 80px 5%;
-            text-align: center;
-            background: linear-gradient(180deg, #ffffff 0%, #f0f4f8 100%);
-        }
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        .ui-pill {
-            background-color: #333333;
-            border-radius: 50px;
-            padding: 8px 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .ui-pill:hover {
-            transform: scale(1.05);
-        }
-        .icon-circle {
-            background-color: #d1d1d1;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            color: #64ffda; /* Electric Cyan accent */
         }
-        .inner-icon {
-            width: 20px;
-            height: auto;
+
+        #terminal-container {
+            text-align: center;
+            z-index: 2;
         }
-        .v-text {
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
+
+        /* Branding: New S-Curve with high-tech glow */
+        .brand-logo {
+            width: 120px; 
+            margin-bottom: 25px;
+            /* Filter makes the navy logo glow Cyan to match the terminal */
+            filter: brightness(0) invert(1) drop-shadow(0 0 15px #64ffda);
         }
-        .status-badge {
-            color: #64FFDA; /* Electric Cyan Alpha Signal */
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 12px;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
+        }
+
+        .subtitle {
             font-size: 0.9rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-top: 15px;
+            opacity: 0.8;
+            letter-spacing: 4px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background-color: #64ffda;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .uplink-btn {
+            margin-top: 50px;
+            padding: 18px 35px;
+            background: transparent;
+            border: 1px solid #64ffda;
+            color: #64ffda;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 3px;
+        }
+
+        .uplink-btn:hover {
+            background: rgba(100, 255, 218, 0.15);
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <a href="index.html">
-            <img src="trail.png" alt="Vestigia Labs" class="logo-img">
-        </a>
-        <div class="status-badge">● Engine Online</div>
-    </header>
-
-    <section class="hero">
-        <h1>Detecting Billion-Dollar Information Gaps</h1>
-        <p>Converting linguistic and regulatory asymmetries into institutional-grade trade signals.</p>
+    <div id="terminal-container">
+        <img src="trail.png" alt="Vestigia S-Curve" class="brand-logo">
         
-        <br><br>
-
-        <div class="ui-pill">
-            <div class="icon-circle">
-                <img src="trail.png" alt="Trail" class="inner-icon">
-            </div>
-            <span class="v-text">V</span>
-        </div>
+        <h1>VESTIGIA LABS</h1>
+        <div class="subtitle">INSTITUTIONAL FORENSIC INTELLIGENCE<span class="cursor"></span></div>
         
-        <p style="margin-top: 20px; font-size: 0.8rem; color: #666;">
-            Forensic Intelligence Platform v1.0
-        </p>
-    </section>
+        <button class="uplink-btn" onclick="initializeUplink()">[ INITIALIZE UPLINK ]</button>
+    </div>
 
+    <script>
+        function initializeUplink() {
+            let accessKey = prompt("SECURITY PROTOCOL: ENTER ACCESS KEY");
+            if (accessKey === "vestigia2026") {
+                alert("ACCESS GRANTED. DECODING ASYMMETRY DELTA...");
+                // Path to your future dashboard
+            } else {
+                alert("UNAUTHORIZED ACCESS. SOURCE IP LOGGED.");
+            }
+        }
+    </script>
 </body>
 </html>
