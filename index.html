@@ -43,16 +43,23 @@
             padding: 1rem;
             width: 100%;
             max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* FIXED: Logo now renders clearly without the white box */
+        /* NEW: Flex wrapper to put logo and text side-by-side */
+        .logo-title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px; /* Space between logo and text */
+            margin-bottom: 10px;
+        }
+
         .brand-logo {
-            width: clamp(80px, 10vw, 120px); 
-            margin-bottom: 25px;
+            width: clamp(50px, 7vw, 80px); /* Sized down to match text height better */
             display: block;
-            margin-left: auto;
-            margin-right: auto;
-            /* Optional: Subtle drop shadow for depth without washing out the image */
             filter: drop-shadow(0 0 5px rgba(100, 255, 218, 0.2));
             animation: fadeInLogo 1.5s ease-out;
         }
@@ -92,8 +99,8 @@
         }
 
         @keyframes fadeInLogo {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .trigger-btn {
@@ -148,9 +155,11 @@
     <div id="particles-js"></div>
 
     <div class="container">
-        <img src="trail.png" alt="Vestigia S-Curve" class="brand-logo">
+        <div class="logo-title-wrapper">
+            <img src="trail.png" alt="Vestigia S-Curve" class="brand-logo">
+            <h1>VESTIGIA LABS</h1>
+        </div>
 
-        <h1>VESTIGIA LABS</h1>
         <p class="subtitle"><span id="typewriter"></span><span class="cursor">_</span></p>
         
         <button id="startBtn" class="trigger-btn" onclick="openTerminal()">[ INITIALIZE UPLINK ]</button>
