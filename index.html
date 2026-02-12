@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VESTIGIA LABS | SENTINEL SYSTEM</title>
+    <title>VESTIGIA LABS</title>
+    
+    <link rel="icon" type="image/png" href="trail.png">
     
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
@@ -43,6 +45,15 @@
             max-width: 1000px;
         }
 
+        /* Branding: New S-Curve Logo Integration */
+        .brand-logo {
+            width: clamp(60px, 8vw, 100px); 
+            margin-bottom: 20px;
+            /* Filter applies the Electric Cyan glow to your navy asset */
+            filter: brightness(0) invert(1) drop-shadow(0 0 15px #64ffda);
+            animation: fadeInLogo 1.5s ease-out;
+        }
+
         h1 { 
             white-space: nowrap; 
             font-size: clamp(1.8rem, 6vw, 3.5rem); 
@@ -75,6 +86,11 @@
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
+        }
+
+        @keyframes fadeInLogo {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .trigger-btn {
@@ -129,6 +145,8 @@
     <div id="particles-js"></div>
 
     <div class="container">
+        <img src="trail.png" alt="Vestigia S-Curve" class="brand-logo">
+
         <h1>VESTIGIA LABS</h1>
         <p class="subtitle"><span id="typewriter"></span><span class="cursor">_</span></p>
         
