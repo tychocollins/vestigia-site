@@ -2,204 +2,104 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VESTIGIA LABS</title>
-    
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vestigia Labs | Bilingual Arbitrage Engine</title>
+    <link rel="icon" type="image/png" href="trail.png">
     <style>
-        /* --- RESTORED ORIGINAL TERMINAL THEME --- */
-        html {
-            background-color: #020c1b; 
-            height: 100%;
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #1D2A57; /* Institutional Deep Navy */
         }
-
-        body { 
-            background: radial-gradient(circle at center, #0a192f 0%, #020c1b 100%); 
-            color: #64ffda; 
-            font-family: 'Courier New', Courier, monospace; 
-            margin: 0; 
-            overflow: hidden;
-            overscroll-behavior: none;
-            height: 100dvh; 
+        header {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            padding: 20px 5%;
+            background: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
         }
-
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
+        .logo-img {
+            height: 45px; /* Scaled for institutional clarity */
+            width: auto;
         }
-
-        .container { 
-            position: relative;
-            z-index: 10;
-            text-align: center; 
-            padding: 1rem;
-            width: 100%;
-            max-width: 1000px;
-        }
-
-        h1 { 
-            white-space: nowrap; 
-            font-size: clamp(1.8rem, 6vw, 3.5rem); 
-            letter-spacing: clamp(2px, 1vw, 12px); 
-            margin: 0; 
-            color: #ccd6f6; 
-            text-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
-            cursor: default;
-            line-height: 1;
-            font-weight: 700;
-        }
-
-        .subtitle { 
-            color: #8892b0; 
-            margin-top: 1.5rem;
-            margin-bottom: 3rem; 
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .cursor {
-            display: inline-block;
-            animation: blink 1s step-end infinite;
-            font-weight: bold;
-            color: #64ffda; 
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .trigger-btn {
-            background: transparent;
-            color: #64ffda; 
-            border: 1px solid #64ffda; 
-            padding: clamp(10px, 1.8vh, 18px) clamp(20px, 3.5vw, 45px);
-            font-size: clamp(0.75rem, 1.4vw, 0.95rem);
-            cursor: pointer;
-            letter-spacing: 2px;
-            transition: all 0.4s ease;
-            text-transform: uppercase;
-            box-shadow: 0 0 10px rgba(100, 255, 218, 0.1);
-        }
-
-        .trigger-btn:hover { 
-            background: rgba(100, 255, 218, 0.1);
-            box-shadow: 0 0 25px rgba(100, 255, 218, 0.3);
-            letter-spacing: 4px; 
-        }
-
-        #terminal-interface {
-            display: none;
-            margin-top: 2rem;
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        input[type="text"] {
-            background: rgba(2, 12, 27, 0.8);
-            border: 1px solid #64ffda;
-            color: #64ffda;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 16px; 
-            padding: 12px;
-            width: 90%; 
-            max-width: 350px;
+        .hero {
+            padding: 80px 5%;
             text-align: center;
-            outline: none;
-            letter-spacing: 4px;
+            background: linear-gradient(180deg, #ffffff 0%, #f0f4f8 100%);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .ui-pill {
+            background-color: #333333;
+            border-radius: 50px;
+            padding: 8px 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .ui-pill:hover {
+            transform: scale(1.05);
+        }
+        .icon-circle {
+            background-color: #d1d1d1;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .inner-icon {
+            width: 20px;
+            height: auto;
+        }
+        .v-text {
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .status-badge {
+            color: #64FFDA; /* Electric Cyan Alpha Signal */
+            font-size: 0.9rem;
+            font-weight: bold;
             text-transform: uppercase;
-            box-shadow: inset 0 0 10px rgba(100, 255, 218, 0.1);
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <div id="particles-js"></div>
+    <header>
+        <a href="index.html">
+            <img src="trail.png" alt="Vestigia Labs" class="logo-img">
+        </a>
+        <div class="status-badge">● Engine Online</div>
+    </header>
 
-    <div class="container">
-        <h1>VESTIGIA LABS</h1>
-        <p class="subtitle"><span id="typewriter"></span><span class="cursor">_</span></p>
+    <section class="hero">
+        <h1>Detecting Billion-Dollar Information Gaps</h1>
+        <p>Converting linguistic and regulatory asymmetries into institutional-grade trade signals.</p>
         
-        <button id="startBtn" class="trigger-btn" onclick="openTerminal()">[ INITIALIZE UPLINK ]</button>
+        <br><br>
 
-        <div id="terminal-interface">
-            <input type="text" id="passwordInput" placeholder="ENTER ACCESS KEY" autocomplete="off" onkeypress="handleEnter(event)">
-            <div id="statusMessage" style="margin-top:15px; height:20px; font-size:0.8rem; letter-spacing:2px;"></div>
+        <div class="ui-pill">
+            <div class="icon-circle">
+                <img src="trail.png" alt="Trail" class="inner-icon">
+            </div>
+            <span class="v-text">V</span>
         </div>
-    </div>
+        
+        <p style="margin-top: 20px; font-size: 0.8rem; color: #666;">
+            Forensic Intelligence Platform v1.0
+        </p>
+    </section>
 
-    <script>
-        /* --- RESTORED CYAN PARTICLES --- */
-        particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#64ffda" },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.3, "random": true },
-                "size": { "value": 2, "random": true },
-                "line_linked": { 
-                    "enable": true, 
-                    "distance": 150, 
-                    "color": "#64ffda", 
-                    "opacity": 0.2, 
-                    "width": 1 
-                },
-                "move": { "enable": true, "speed": 1.2 }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": { "onhover": { "enable": true, "mode": "grab" } }
-            },
-            "retina_detect": true
-        });
-
-        const text = "INSTITUTIONAL FORENSIC INTELLIGENCE";
-        const typeElem = document.getElementById('typewriter');
-        let idx = 0;
-        function type() {
-            if (idx < text.length) {
-                typeElem.innerHTML += text.charAt(idx);
-                idx++;
-                setTimeout(type, 50);
-            }
-        }
-        window.onload = type;
-
-        function openTerminal() {
-            document.getElementById('startBtn').style.display = 'none';
-            document.getElementById('terminal-interface').style.display = 'block';
-            document.getElementById('passwordInput').focus();
-        }
-
-        function handleEnter(e) { if (e.key === 'Enter') checkAccess(); }
-
-        function checkAccess() {
-            const input = document.getElementById('passwordInput');
-            const status = document.getElementById('statusMessage');
-            if (input.value.toUpperCase() === "ALPHA101") {
-                status.style.color = "#64ffda";
-                status.innerText = "ACCESS GRANTED. DECRYPTING...";
-                setTimeout(() => {
-                    window.location.href = "mailto:tycho@vestigialabs.com?subject=ACCESS%20REQUEST:%20ALPHA101&body=Clearance%20Code:%20Verified.";
-                }, 1500);
-            } else {
-                status.style.color = "#ff5f5f";
-                status.innerText = "ACCESS DENIED";
-                input.value = "";
-            }
-        }
-    </script>
 </body>
 </html>
